@@ -43,7 +43,7 @@ The next step was to move our python script to our EC2 instance so we can, in th
 scp -i $KEY -r $(pwd) ec2-user@$HOST:/home/ec2-user
 ```
 
-### 2.4 Set up a cronjob to run the code every 15 minutes
+### Set up a cronjob to run the code every 15 minutes
 The code now needed to be executed every 15 minutes automatically. This was done by setting up a cronjob on our EC2 instance. In small steps, the following was typed in our terminal while connected with the EC2 instance:
 1. ` crontab -e `: this opened the vim editor
 2. `I`: this allowed us to type a cronjob in the vim editor
