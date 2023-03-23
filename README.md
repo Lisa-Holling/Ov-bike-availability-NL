@@ -58,6 +58,61 @@ path = os.path.dirname(sys.executable)
 print(path)
 ```
 
+### Linking to a S3 bucket
+The last step was to link our EC2 instance to an s3 bucket. An s3 bucket is a cloud-based object storage service also offered by Amazon Web Services (AWS).
+We used S3 buckets for backup and recovery, since we automatically uploaded the data to the s3 bucket every 15 minutes. This way, it can be accessed when needed and even when, in extreme cases, the EC2 instance crashes or gets hacked, we still have the lastest retrieved data in the cloud in our s3 bucket. An s3 bucket can be set up in a few steps:
+
+### Creating an s3 bucket
+First of all, we created an s3 bucket on our same AWS account as on which we created our EC2 instance. This was not that difficult and could be set up in minutes (see picture). Our s3 bucket was called 'scrapeovfiets'. The difficult part was creating the IAM role and linking the s3 bucket to the EC2 instance with the IAM role (see 3.2 and 3.3). 
+
+<img src="https://scrapeovfiets.s3.amazonaws.com/bucket.png" alt="s3 bucket" width = "900">
+
+### Creating an IAM role with s3:PutObject permissions
+For the EC2 instance to be allowed to put objects in the s3 bucket, it needed to be assigned an IAM role. An IAM role can be compared to a permission that a mother grants to her child to play with certain toys in the house. The EC2 instance is the child, and the S3 bucket is the toy box. We thus needed to set up an IAM role in two steps:
+1. Create a policy
+
+    We first need to create a policy which is a permission to put objects in the s3 bucket (policies and permissions are used both, but have the same meaning). We did this by tying the following json formatted code in the json editor for creating a policy:
+
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "S3PutObject",
+                "Effect": "Allow",
+                "Action": [
+                    "s3:PutObject"
+                ],
+                "Resource": [
+                    "arn:aws:s3:::scrapeovfiets/*"
+                ]
+            }
+        ]
+    }
+    ```
+    We then could give our policy a name and save it. 
+
+2. Create IAM role and assign policy
+
+    Then we create an actual IAM role. In this step we can assign the policy created in step 3.2 to our IAM role. We then give our IAM role a name and save it. 
+
+
+### Assign IAM role to the EC2 instance
+So far, we have created an s3 bucket and we created an IAM role with s3:PutObject permissions. We now want to assign this IAM role to the EC2 instance, so the EC2 instance is allowed to put objects in the s3 bucket (we want the mother to give permissioins to the child to play with the toys). We do this by just connecting the IAM role to the EC2 instance.
+
+<img src="https://scrapeovfiets.s3.amazonaws.com/AssignIAMrole.png" alt="Assign IAM role" width = "900">
+
+After we have connected the IAM role with the EC2 instance, we can tes in our terminal if it worked. For this, we have to connect with the EC2 instance in our terminal and type the following command in our terminal:
+```dash
+aws iam list-users
+```
+If everything worked, we should get the output:
+
+<img src="https://scrapeovfiets.s3.amazonaws.com/IAMroleterminal.png" alt="Assign IAM role" width = "350">
+
+### 3.4 Include code in Python script that puts the json files in the s3 bucket
+The last step was to include code in our Python script that puts the json files created in the script in our s3 bucket. The code for this can be found in the source code.
+
 # Resources 
 Amazon EC2 - Secure and resizable 
 	compute capacity – Amazon Web 
