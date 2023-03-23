@@ -58,5 +58,46 @@ path = os.path.dirname(sys.executable)
 print(path)
 ```
 
+# Resources 
+Amazon EC2 - Secure and resizable 
+	compute capacity – Amazon Web 
+	Services. (z.d.). Amazon Web 
+	Services, Inc. 
+	https://aws.amazon.com/ec2/pricing/
+Amazon S3 Simple Storage Service Pricing Amazon Web Services. (z.d.). Amazon Web Services, Inc. 
+https://aws.amazon.com/s3/pricing/ 
+Baumeister, T. (2019). The rise of shared 
+	mobility: Understanding the challenges 
+	and opportunities. Routledge.
+Horstman, M. (n.d.). Over deze website - 
+	ovfietsbeschikbaar.nl. 
+	https://ovfietsbeschikbaar.nl/over
+How to rent an OV-fiets | Door to door | NS. 
+	(z.d.). Dutch Railways. 
+https://www.ns.nl/en/door-to-door/ov-fiets/how-it-works.html
+Joshi, A., & Narayan, P. (2020). The emergence 
+	of shared mobility: A review of the 
+	literature. Transport Reviews, 40(6), 
+	691-719.
+
+Openbaar Vervoer Nederland. (n.d.). OpenOV. 
+	Retrieved March 16, 2023, from 
+	https://openov.nl/.
+Koch, T. (n.d.). KV78Turbo-OVAPI Wiki. 
+	Retrieved March 16, 2023, from 
+https://github.com/koch-t/KV78Turbo-OVAPI/wiki.
+Pluister, B. (2022). OV-fiets: where to go?: A 
+	study on OV-fiets user characteristics 
+	and destinations. Master Thesis Civil 
+	Engineering and Management, 
+	University of Twente. 
+http://essay.utwente.nl/93399/1/Pluister%20B.%201718150%20_openbaar.pdf
+Stichting OpenGeo. (n.d.). openOV. 
+	https://openov.nl/
+Wu, X., Wang, Y., & Chen, Y. (2021). Shared 
+	mobility in the age of smart cities: 
+	Current status and future trends. 
+	Sustainability, 13(7), 3227.
+
 # About
 This respository was made by Jonas Klein, Matthijs van Gils, Marijn Bransen, Lisa Holling and Roos van Sambeek and was commissioned by Hannes Datta, proffesor at Tilburg University as part of the course 'Online data collection & management'.
