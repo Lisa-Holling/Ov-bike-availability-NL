@@ -13,4 +13,47 @@ As mentioned before, we scraped for a period of 7 days and with intervals of 15 
 
 <img src="https://scrapeovfiets.s3.amazonaws.com/Roadmap.png" alt="Roadmap">
 
-# Dependencies (When wanting to automate scraping)
+## Dependencies
+For the installation of an virtual computer (EC2 instance) you can follow the steps on [this installation guide](https://tilburgsciencehub.com/tutorials/scale-up/running-computations-remotely/cloud-computing/).
+
+We can also show in steps how we did it:
+
+### Launch an EC2 instance via AWS
+We launched an EC2 instance via Amazon Web Services (AWS) by following the steps from the [Running Computations Remotely article](https://tilburgsciencehub.com/tutorials/scale-up/running-computations-remotely/cloud-computing/) on Tilburg Science hub. This way, we got an EC2 instance as shown in the picture below:
+
+<img src="https://scrapeovfiets.s3.amazonaws.com/EC2.png" alt="EC2 instance" width = "900">
+
+### Connect to EC2 instance
+The next step was to connect to the EC2 instance via our terminal. this had to be done by specifying the HOST and the KEY variable by running the following commands in our terminal:
+```dash
+export HOST=<OUR-PUBLIC-IPV4-DNS>
+export KEY=<PATH_TO_OUR_KEY_PAIR_FILE>
+```
+You than use the `ssh` command to actualy connect to the instance:
+```dash
+ssh -i /path/to/key.pem ec2-user@<EC2-instance-DNS>
+```
+We then got the following output in our terminal, which meant we were connected to our EC2 instance:
+
+<img src="https://scrapeovfiets.s3.amazonaws.com/Connecting_to_EC2.png" alt="Connecting to EC2 instance" width = "500">
+
+### Move python script from own computer to EC2 instance
+The next step was to move our python script to our EC2 instance so we can, in the next step, run it via our cronjob. First, we needed to make sure we were in the directory where our python script was located via the terminal (with cd commands). We then ran one line of code to copy files to the EC2 instance:
+```dash
+scp -i $KEY -r $(pwd) ec2-user@$HOST:/home/ec2-user
+```
+
+### 2.4 Set up a cronjob to run the code every 15 minutes
+The code now needed to be executed every 15 minutes automatically. This was done by setting up a cronjob on our EC2 instance. In small steps, the following was typed in our terminal while connected with the EC2 instance:
+1. ` crontab -e `: this opened the vim editor
+2. `I`: this allowed us to type a cronjob in the vim editor
+3. `*/15 * * * * /usr/bin/python3 /home/ec2-user/ScrapeFiets/ScrapeFiets.py `: the cron syntax '`*/15 * * * *`' means that the code runs all the time with an interval of 15 minutes. `/usr/bin/python3` is the path to the python installation on our EC2 instance. To know this path to our python installation, we runned the code below once in python. `/home/ec2-user/ScrapeFiets/ScrapeFiets.py ` is the path to our python script.
+4. ` :wq `: this way, we closed the vim editor and saved the cronjob. 
+
+Now we could verify our crontab was set up by running `crontab -l` and seeing our crontab line.
+
+```
+# finding the path to the python installation on the EC2 instance
+path = os.path.dirname(sys.executable)
+print(path)
+```
