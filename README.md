@@ -12,3 +12,5 @@ For the course online data collection and management, our team scraped data from
 As mentioned before, we scraped for a period of 7 days and with intervals of 15 minutes. Of course, it is impossible to scrape 7 days in a row, every 15 minutes manually. We did this with the help of a virtual computer. We copied our code to a virtual computer and ran our Python script every 15 minutes with the help of a cronjob. The type of virtual computer we used was an EC2 instance offered by Amazon Web Services (AWS). AWS also offers a so called s3 bucket; this is a cloud storage service and it allows you to store and retrieve any amount of data from anywhere on the web. We used this tool to automatically store the data every 15 minutes in the cloud, so we were sure the data was stored safely. We can show the roadmap of our project graphically in the graph below, were the project is divided into three parts:
 
 <img src="https://scrapeovfiets.s3.amazonaws.com/Roadmap.png" alt="Roadmap">
+
+# Dependencies (When wanting to automate scraping)
