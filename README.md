@@ -13,6 +13,12 @@ As mentioned before, we scraped for a period of 7 days and with intervals of 15 
 
 <img src="https://scrapeovfiets.s3.amazonaws.com/Roadmap.png" alt="Roadmap">
 
+## Repository Overview
+├── README.md
+├── .gitignore
+└── src
+    └── paper
+
 ## Dependencies
 For the installation of an virtual computer (EC2 instance) you can follow the steps on [this installation guide](https://tilburgsciencehub.com/tutorials/scale-up/running-computations-remotely/cloud-computing/).
 
