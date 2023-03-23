@@ -57,3 +57,6 @@ Now we could verify our crontab was set up by running `crontab -l` and seeing ou
 path = os.path.dirname(sys.executable)
 print(path)
 ```
+
+# About
+This respository was made by Jonas Klein, Matthijs van Gils, Marijn Bransen, Lisa Holling and Roos van Sambeek and was commissioned by Hannes Datta, proffesor at Tilburg University as part of the course 'Online data collection & management'.
