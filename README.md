@@ -116,7 +116,7 @@ aws iam list-users
 ```
 If everything worked, we should get the output:
 
-<img src="https://github.com/Lisa-Holling/Ov-bike-availability-NL/raw/main/images/IAMroleterminal.png" alt="Roadmap" width="500">
+<img src="https://github.com/Lisa-Holling/Ov-bike-availability-NL/raw/main/images/IAMroleterminal.png" alt="Roadmap" width="350">
 
 ### Include code in Python script that puts the json files in the s3 bucket
 The last step was to include code in our Python script that puts the json files created in the script in our s3 bucket. The code for this can be found in the source code.
