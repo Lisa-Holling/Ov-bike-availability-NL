@@ -29,7 +29,7 @@ We can also show in steps how we did it:
 ### Launch an EC2 instance via AWS
 We launched an EC2 instance via Amazon Web Services (AWS) by following the steps from the [Running Computations Remotely article](https://tilburgsciencehub.com/tutorials/scale-up/running-computations-remotely/cloud-computing/) on Tilburg Science hub. This way, we got an EC2 instance as shown in the picture below:
 
-<img src="https://scrapeovfiets.s3.amazonaws.com/EC2.png" alt="EC2 instance" width = "900">
+![EC2](https://github.com/Lisa-Holling/Ov-bike-availability-NL/raw/main/images/EC2.png)
 
 ### Connect to EC2 instance
 The next step was to connect to the EC2 instance via our terminal. this had to be done by specifying the HOST and the KEY variable by running the following commands in our terminal:
