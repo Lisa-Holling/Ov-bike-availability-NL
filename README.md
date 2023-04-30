@@ -43,7 +43,7 @@ ssh -i /path/to/key.pem ec2-user@<EC2-instance-DNS>
 ```
 We then got the following output in our terminal, which meant we were connected to our EC2 instance:
 
-<img src="https://scrapeovfiets.s3.amazonaws.com/Connecting_to_EC2.png" alt="Connecting to EC2 instance" width = "500">
+![Connecting to EC2](https://github.com/Lisa-Holling/Ov-bike-availability-NL/raw/main/images/Connecting_to_EC2.png)
 
 ### Move python script from own computer to EC2 instance
 The next step was to move our python script to our EC2 instance so we can, in the next step, run it via our cronjob. First, we needed to make sure we were in the directory where our python script was located via the terminal (with cd commands). We then ran one line of code to copy files to the EC2 instance:
@@ -73,7 +73,7 @@ We used S3 buckets for backup and recovery, since we automatically uploaded the 
 ### Creating an s3 bucket
 First of all, we created an s3 bucket on our same AWS account as on which we created our EC2 instance. This was not that difficult and could be set up in minutes (see picture). Our s3 bucket was called 'scrapeovfiets'. The difficult part was creating the IAM role and linking the s3 bucket to the EC2 instance with the IAM role (see 3.2 and 3.3). 
 
-<img src="https://scrapeovfiets.s3.amazonaws.com/bucket.png" alt="s3 bucket" width = "900">
+![Bucket](https://github.com/Lisa-Holling/Ov-bike-availability-NL/raw/main/images/bucket.png)
 
 ### Creating an IAM role with s3:PutObject permissions
 For the EC2 instance to be allowed to put objects in the s3 bucket, it needed to be assigned an IAM role. An IAM role can be compared to a permission that a mother grants to her child to play with certain toys in the house. The EC2 instance is the child, and the S3 bucket is the toy box. We thus needed to set up an IAM role in two steps:
@@ -108,7 +108,7 @@ For the EC2 instance to be allowed to put objects in the s3 bucket, it needed to
 ### Assign IAM role to the EC2 instance
 So far, we have created an s3 bucket and we created an IAM role with s3:PutObject permissions. We now want to assign this IAM role to the EC2 instance, so the EC2 instance is allowed to put objects in the s3 bucket (we want the mother to give permissioins to the child to play with the toys). We do this by just connecting the IAM role to the EC2 instance.
 
-<img src="https://scrapeovfiets.s3.amazonaws.com/AssignIAMrole.png" alt="Assign IAM role" width = "900">
+![Assign IAM Role](https://github.com/Lisa-Holling/Ov-bike-availability-NL/raw/main/images/AssignIAMrole.png)
 
 After we have connected the IAM role with the EC2 instance, we can tes in our terminal if it worked. For this, we have to connect with the EC2 instance in our terminal and type the following command in our terminal:
 ```dash
@@ -116,7 +116,7 @@ aws iam list-users
 ```
 If everything worked, we should get the output:
 
-<img src="https://scrapeovfiets.s3.amazonaws.com/IAMroleterminal.png" alt="Assign IAM role" width = "350">
+![IAM Role Terminal](https://github.com/Lisa-Holling/Ov-bike-availability-NL/raw/main/images/IAMroleterminal.png)
 
 ### Include code in Python script that puts the json files in the s3 bucket
 The last step was to include code in our Python script that puts the json files created in the script in our s3 bucket. The code for this can be found in the source code.
