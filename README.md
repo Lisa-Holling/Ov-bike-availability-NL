@@ -43,7 +43,7 @@ ssh -i /path/to/key.pem ec2-user@<EC2-instance-DNS>
 ```
 We then got the following output in our terminal, which meant we were connected to our EC2 instance:
 
-![Connecting to EC2](https://github.com/Lisa-Holling/Ov-bike-availability-NL/raw/main/images/Connecting_to_EC2.png)
+<img src="https://github.com/Lisa-Holling/Ov-bike-availability-NL/raw/main/images/Connecting_to_EC2.png" alt="Roadmap" width="500">
 
 ### Move python script from own computer to EC2 instance
 The next step was to move our python script to our EC2 instance so we can, in the next step, run it via our cronjob. First, we needed to make sure we were in the directory where our python script was located via the terminal (with cd commands). We then ran one line of code to copy files to the EC2 instance:
